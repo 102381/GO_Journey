@@ -2,20 +2,31 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 )
 
-func main() {
+func fizzbuzz(n int) []string {
+	result := make([]string, n)
 
-	for i := 1; i <= 100; i++ {
+	for i := 1; i < n; i++ {
 
 		if i%3 == 0 && i%5 == 0 {
-			fmt.Println("fizzbuzz")
+			result[i-1] = "fizzbuzz"
 		} else if i%3 == 0 {
-			fmt.Println("buzz")
+			result[i-1] = "buzz"
 		} else if i%5 == 0 {
-			fmt.Println("fizz")
+			result[i-1] = "fizz"
 		} else {
-			fmt.Println(i)
+			result[i-1] = strconv.Itoa(i)
 		}
+	}
+	return result
+}
+
+func main() {
+	n := 100
+	result := fizzbuzz(n)
+	for _, value := range result {
+		fmt.Println(value)
 	}
 }
